@@ -5,72 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>三輪車ベーシスト ハガさん</title>
     <style>
-        body { 
-            margin: 0; 
-            background: #000; 
-            font-family: sans-serif;
-            color: white; 
-            overflow: hidden; 
-        }
-
+        body { margin: 0; background: #000; font-family: sans-serif; color: white; overflow: hidden; }
         #game-screen {
-            width: 100vw; 
-            height: 100vh;
-            background-image: url('https://cdn.discordapp.com/attachments/1455445874871238752/1455484917478592672/IMG_2186.png?ex=6962bd35&is=69616bb5&hm=e7967cff3175086af016207b4bdb16132f308aeb358db2046b0ee0ffe06c2b39&');
-            background-size: cover; 
-            background-position: center;
-            display: flex; 
-            flex-direction: column; 
-            justify-content: flex-end;
-            position: relative;
+            width: 100vw; height: 100vh;
+            background-image: url('park.png'); /* GitHub上の画像 */
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: flex-end; position: relative;
         }
-
-        /* ハガさんの配置を上に持ち上げました */
         #char-img {
-            position: absolute;
-            bottom: 35%; /* 22%から35%にアップして三輪車を見えるように */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50%; 
-            max-width: 320px;
-            filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
-            z-index: 5;
+            position: absolute; bottom: 35%; left: 50%; transform: translateX(-50%);
+            width: 50%; max-width: 320px; filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); z-index: 5;
         }
-
-        /* メッセージウィンドウを少し低く、コンパクトに */
-        #msg-box {
-            background: rgba(0, 0, 0, 0.85); 
-            padding: 15px 25px 30px 25px; /* 余白を少し削りました */
-            border-top: 4px solid #d4af37;
-            z-index: 10;
-            min-height: 20vh; /* 高さを少し抑えました */
-        }
-
-        #text {
-            font-size: 16px; /* 文字サイズを少し調整 */
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
+        #msg-box { background: rgba(0, 0, 0, 0.85); padding: 15px 25px 30px 25px; border-top: 4px solid #d4af37; z-index: 10; min-height: 20vh; }
+        #text { font-size: 17px; line-height: 1.6; margin-bottom: 15px; }
         .choices { display: flex; flex-direction: column; gap: 10px; }
-
-        button {
-            background: linear-gradient(to bottom, #ffffff, #e0e0e0);
-            border: 2px solid #d4af37;
-            padding: 12px;
-            font-weight: bold;
-            border-radius: 30px;
-            color: #333;
-            font-size: 13px;
-        }
+        button { background: linear-gradient(to bottom, #ffffff, #e0e0e0); border: 2px solid #d4af37; padding: 12px; font-weight: bold; border-radius: 30px; color: #333; font-size: 13px; }
     </style>
 </head>
 <body>
-
 <div id="game-screen">
-    <img src="https://cdn.discordapp.com/attachments/1455445874871238752/1459355839558193256/99f35f3f1f027981.png?ex=6962fa89&is=6961a909&hm=84aad97008910c62c5e1f328f9bcb1b615f508b98121598255f3655e7bfc0e09&" id="char-img">
-
-    <div id="msg-box">
+    <img src="haga.png" id="char-img"> <div id="msg-box">
         <div id="text">今日はいまからライブ！<br>…なのに、ハガさんが三輪車で公園にいるぞ…！</div>
         <div class="choices" id="btns">
             <button onclick="end(1)">え！今日のライブ、間に合う？急いでね！</button>
@@ -78,19 +32,14 @@
         </div>
     </div>
 </div>
-
 <script>
     function end(type) {
         const t = document.getElementById('text');
         const b = document.getElementById('btns');
-        if(type === 1) {
-            t.innerHTML = "<span style='color:#ffeb3b; font-weight:bold;'>ハガさん「ハッ！ベルサイユのバラのごとく華麗に間に合わせてみせる！」</span><br><br>ハガさんは三輪車で爆走して去っていった。ライブは大成功だ！【GOOD END】";
-        } else {
-            t.innerHTML = "えゐむ「僕も乗りたい！」<br><span style='color:#ffeb3b; font-weight:bold;'>ハガさん「乗れよ…風になろうぜ」</span><br><br>二人はライブを忘れ、三輪車で公園の星になった。【BAD END】";
-        }
+        if(type === 1) { t.innerHTML = "<span style='color:#ffeb3b; font-weight:bold;'>ハガさん「ハッ！ベルバラのごとく華麗に間に合わせる！」</span><br><br>ハガさんは爆走して去った！【GOOD END】"; }
+        else { t.innerHTML = "えゐむ「僕も乗りたい！」<br><span style='color:#ffeb3b; font-weight:bold;'>ハガさん「乗れよ…風になろうぜ」</span><br><br>二人は公園の星になった。【BAD END】"; }
         b.innerHTML = '<button onclick="location.reload()" style="background:#d4af37; color:white;">もう一度やり直す</button>';
     }
 </script>
-
 </body>
 </html>
